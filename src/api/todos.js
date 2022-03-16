@@ -1,5 +1,11 @@
 import { uniqId } from "../utils/id";
 
+// class Todo {
+//   constructor(text, done) {
+
+//   }
+// }
+
 export const todoList = [
   {
     id: uniqId(),
