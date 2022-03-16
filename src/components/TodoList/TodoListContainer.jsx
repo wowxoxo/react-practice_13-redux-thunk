@@ -1,24 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { todoList } from "../../api/todos";
+import React from "react";
+import { useSelector } from "react-redux";
 
 import { TodoList } from "./TodoList";
 
 export const TodoListContainer = () => {
-  const [state, setState] = useState([]);
+  const doneItems = useSelector(state => state.todos.filter(todo => todo.done))
+  const todoItems = useSelector(state => state.todos.filter(todo => !todo.done))
 
-  useEffect(() => {
-    setTimeout(() => {
-      setState(todoList);
-    }, 1000);
-  }, []);
-
-  const doneItems = () => {
-    return state.filter((item) => item.done);
-  };
-
-  const todoItems = () => {
-    return state.filter((item) => !item.done);
-  };
-
-  return <TodoList doneItems={doneItems()} todoItems={todoItems()} />;
+  return <TodoList doneItems={doneItems} todoItems={todoItems} />;
 };

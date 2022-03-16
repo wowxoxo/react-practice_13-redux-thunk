@@ -8,7 +8,9 @@ import { AddItemContainer } from '../AddItem'
 import './Editor.css'
 
 export function Editor({ items, onTextChange, onToggle, onRemove }) {
-  const handleChange = (item, value) => {
+
+
+  const handleInputChange = (item, value) => {
     onTextChange(item, value)
   }
 
@@ -19,6 +21,10 @@ export function Editor({ items, onTextChange, onToggle, onRemove }) {
   const handleRemove = (item) => {
     onRemove(item)
   }
+
+  // const handleChange = (item) => {
+
+  // }
 
   return (
     <>
@@ -35,7 +41,7 @@ export function Editor({ items, onTextChange, onToggle, onRemove }) {
               type="text"
               className="editor__input"
               value={item.text}
-              onChange={(event) => handleChange(item, event.target.value)}
+              onChange={(event) => handleInputChange(item, event.target.value)}
             />
             <Button
               type="button"

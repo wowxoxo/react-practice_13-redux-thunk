@@ -1,27 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Editor } from './Editor'
-import { todoList } from "../../api/todos";
+import { useSelector, useDispatch } from 'react-redux';
+import { CHANGE_TODO_TEXT, changeTodoText, changeTodoDone, removeTodo } from '../../store/todos/actions';
 
 export function EditorContainer() {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setItems(todoList);
-    }, 1000);
-  }, []);
+  const dispatch = useDispatch()
+  const items = useSelector(state => state.todos)
 
 
-  const handleTextChange = () => {
-    
+  const handleTextChange = (item, value) => {
+    // dispatch({ type: CHANGE_TODO_TEXT, payload: {  id: item.id, text: value }  })
+    dispatch(changeTodoText(item, value))
   }
 
-  const handleToggle = () => {
-    
+  const handleToggle = (item, value) => {
+    dispatch(changeTodoDone(item, value))
   }
 
   const handleRemove = (item) => {
-    
+    dispatch(removeTodo(item))
   }
 
   return (
