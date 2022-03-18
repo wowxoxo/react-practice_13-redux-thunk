@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import { Todos } from './Todos'
 import { Editor } from './Editor'
+import { Notes } from './Notes'
 
 export function Router({ children }) {
   return (
@@ -15,6 +16,9 @@ export function Router({ children }) {
           </Route>
           <Route path="/editor">
             <Editor />
+          </Route>
+          <Route path="/notes">
+            <Notes />
           </Route>
         </Switch>
       </div>

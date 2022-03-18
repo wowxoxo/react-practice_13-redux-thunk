@@ -14,6 +14,10 @@ const navItems = [
   {
     href: "/editor",
     title: "Editor"
+  },
+  {
+    href: "/notes",
+    title: "Notes"
   }
 ];
 
