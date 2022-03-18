@@ -6,6 +6,7 @@ export const REMOVE_TODO = "REMOVE_TODO";
 export const CHANGE_TODO_TEXT = "CHANGE_TODO_TEXT";
 export const CHANGE_TODO_DONE = "CHANGE_TODO_DONE";
 export const CHANGE_TODO = "CHANGE_TODO";
+export const INIT_TODOS = "INIT_TODOS";
 
 // action
 // { type: 'SOME', payload: id }

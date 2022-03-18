@@ -33,3 +33,11 @@ export const todoList = [
     done: false
   }
 ];
+
+export const getAll = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(todoList);
+    }, 1000);
+  });
+};

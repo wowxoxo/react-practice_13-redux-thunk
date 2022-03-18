@@ -1,6 +1,7 @@
 import { store } from "..";
 import { todoList } from "../../api/todos";
 import {
+  INIT_TODOS,
   ADD_TODO,
   REMOVE_TODO,
   CHANGE_TODO_TEXT,
@@ -8,8 +9,12 @@ import {
   CHANGE_TODO_DONE
 } from "./actions";
 
-export const todoReducer = (state = todoList, action) => {
+export const todoReducer = (state = [], action) => {
   switch (action.type) {
+    case INIT_TODOS: {
+      const todos = action.payload;
+      return todos;
+    }
     case ADD_TODO: {
       const newTodo = action.payload;
       return [...state, newTodo];
