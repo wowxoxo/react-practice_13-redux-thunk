@@ -18,7 +18,7 @@ export const mockNotes = [note1, note2, note3, note4, note5, note6];
 export const getUserNotes = (userId) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(mockNotes.filter((user) => user.id === userId));
+      resolve(mockNotes.filter((user) => user.userId === userId));
     }, 1000);
   });
 };

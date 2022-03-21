@@ -7,7 +7,7 @@ const Notes = () => {
   const dispatch = useDispatch()
   const [userData, setUserData] = useState()
   const getUserData = () => {
-    dispatch(getUserCombinedData(1).then(data => setUserData(data)))
+    dispatch(getUserCombinedData(1)).then(data => setUserData(data))
   }
 
   return (

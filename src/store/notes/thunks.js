@@ -20,12 +20,33 @@ const getUserNotes = (userId) => {
   };
 };
 
+// export const getUserCombinedData = (userId) => {
+//   return (dispatch) => {
+//     return dispatch(getUser(userId))
+//       .then(() => dispatch(getUserNotes(userId)))
+//       .then((data) => {
+//         return { notes: data };
+//       });
+//   };
+// };
+
 export const getUserCombinedData = (userId) => {
-  return (dispatch) => {
-    return dispatch(getUser(userId))
-      .then(() => dispatch(getUserNotes(userId)))
-      .then((data) => {
-        return Promise.resolve({ notes: data });
+  return (dispatch, getState) => {
+    const userData = getState().userData;
+    if (userData.user && userData.userNotes) {
+      console.log("get exists data from store");
+      return Promise.resolve({
+        user: userData.user,
+        notes: userData.userNotes
       });
+    }
+
+    console.log("data from server");
+    return Promise.all([
+      dispatch(getUser(userId)),
+      dispatch(getUserNotes(userId))
+    ]).then(([user, notes]) => {
+      return { user: user.payload, notes: notes.payload };
+    });
   };
 };
